@@ -42,6 +42,7 @@ footer{
 .liste{
     display: flex;
     justify-content: space-around;
+    margin-top: 10px;
 }
 .copyright{
     display: flex;
@@ -60,4 +61,57 @@ h1 {
 }
 h2 {
     margin-left: 20px;
+}
+
+@media only screen and (max-width: 400px) {
+
+    h1 {
+        display: none;
+    }
+    .logo{
+        margin: 0;
+    }
+    .navbar{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;  
+        width: 30%;
+    }
+    body{
+        background-color: lime;
+    }
+    button{
+        background-color: red;
+        color: gold;
+        font-size: xx-small;
+        height: 30px;
+        width: 50px;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+}
+
+    @media only screen and (min-width: 401px) and (max-width: 600px) {
+
+        .logo{
+            margin: 0;
+        }
+        .navbar{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;  
+            width: 30%;
+        }
+        body{
+            background-color: blueviolet;
+        }
+        button{
+            background-color: lime;
+            color: darkblue;
+            font-size: x-small;
+            height: 40px;
+            width: 70px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
 }
