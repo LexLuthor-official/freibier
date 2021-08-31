@@ -15,6 +15,13 @@
     
     width: 30%;
 }
+.gif {
+    margin-left: 50%;
+    display: flex;
+    
+    
+}
+
 .logo {
     height: 70px;
     width: 100px;
@@ -23,9 +30,10 @@
 
 .screenshot{
     
-    height: 500px;
+    height: 1000px;
     width: 100%;
-    
+    display: flex;
+    align-items: center;
     
 }
 
