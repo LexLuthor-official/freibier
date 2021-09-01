@@ -14,7 +14,7 @@ const Form = () => {
    };
    return (
       <div className="App">
-         <h1>Name of the user:</h1>
+         <h1>Insert Url:</h1>
          <input
             placeholder="URL"
             value={name}
