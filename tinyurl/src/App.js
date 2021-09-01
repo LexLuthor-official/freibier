@@ -1,22 +1,27 @@
 import './App.css';
-import Footer from './Components/Footer.jsx';
-import MainSection from './Components/MainSection.jsx';
-import Header from './Components/Header.jsx';
+import Home from './Components/Home.jsx';
+import Error from './Components/Error.jsx';
+import Login from './Components/Login.jsx';
+
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
 
 function App() {
   return (
+    
     <div className="app">
-      <h1>Freibier</h1>
-      <header className="headerbox">
-          <Header/>   
-      </header>
-      <section>
-          <MainSection/>
-      </section>
-      <footer className="liste">
-          <Footer/>
-      </footer>
+      
+      
+      <Router>
+      <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/Login" component={Login} />
+      <Route component={Error} />
+    </Switch>
+    </Router>
     </div>
+    
   );
 }
 
