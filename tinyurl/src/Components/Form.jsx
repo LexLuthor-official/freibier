@@ -17,7 +17,7 @@ const Form = () => {
       <div className="App">
          <h1>Name of the user:</h1>
          <input
-            placeholder="E-Mail"
+            placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
          />
