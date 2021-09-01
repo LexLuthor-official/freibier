@@ -4,9 +4,9 @@ function Login() {
     return (
         <div>
             <p>Login</p>
-            <form action="submit">
-                <input type="text" name="name" id="name" />
-                <input type="text" name="password" id="password" />
+            <form action="#">
+                <input type="text" name="name" id="name" placeholder="Name" />
+                <input type="text" name="password" id="password" placeholder="Password" />
             </form>
         </div>
     )

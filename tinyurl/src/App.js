@@ -2,7 +2,7 @@ import './App.css';
 import Home from './Components/Home.jsx';
 import Error from './Components/Error.jsx';
 import Login from './Components/Login.jsx';
-import Form from './Form.jsx';
+import Form from './Components/Form.jsx';
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
