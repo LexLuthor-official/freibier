@@ -6,18 +6,18 @@ const Form = () => {
    const [pwd, setPwd] = useState('');
 
    const handle = () => {
-      localStorage.setItem('Name', name);
+      localStorage.setItem('E-Mail', name);
       localStorage.setItem('Password', pwd);
    };
    const remove = () => {
-      localStorage.removeItem('Name');
+      localStorage.removeItem('E-Mail');
       localStorage.removeItem('Password');
    };
    return (
       <div className="App">
          <h1>Name of the user:</h1>
          <input
-            placeholder="Name"
+            placeholder="E-Mail"
             value={name}
             onChange={(e) => setName(e.target.value)}
          />
@@ -31,9 +31,9 @@ const Form = () => {
          <div>
             <button onClick={handle}>Done</button>
          </div>
-         {localStorage.getItem('Name') && (
+         {localStorage.getItem('E-Mail') && (
             <div>
-               Name: <p>{localStorage.getItem('Name')}</p>
+               Name: <p>{localStorage.getItem('E-Mail')}</p>
             </div>
          )}
          {localStorage.getItem('Password') && (
