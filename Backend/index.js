@@ -25,13 +25,13 @@ server.get("/users/:userId", async (req, res) => {
 });
 
 
-server.get("/articles", async (req, res) => {
-    const articles = await db.collection("articles").find().toArray();
+server.get("/article", async (req, res) => {
+    const articles = await db.collection("article").find().toArray();
     res.json(articles);
 });
 
-server.get("/articles/:articleId", async (req, res) => {
-    const article = await db.collection("articles").findOne({
+server.get("/article/:articleId", async (req, res) => {
+    const article = await db.collection("article").findOne({
         _id: ObjectId(req.params.articleId),
     });
     res.json(article);
@@ -47,14 +47,14 @@ server.get("/users/:userId/readinglist", async (req, res) => {
         },
         {
             $lookup: {
-                from: "articles",
+                from: "article",
                 localField: "readinglist",
                 foreignField: "_id",
-                as: "articles",
+                as: "article",
             }
         },
     ]).toArray();
-    res.json(articles);
+    res.json(article);
 });
 
 
