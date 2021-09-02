@@ -55,13 +55,14 @@ async function readOne (id) {
 	]))[0];
 }
 
-async function update (id, { title, date, maxNumberGuests }) {
+async function update (id, { link, title, screenshot, description }) {
 	const article = await Article.findById(id);
 	if (!article) throw new Error("event_not_found");
 
+	article.link = link || article.link;
 	article.title = title || article.title;
-	article.date = date || article.date;
-	article.maxNumberGuests = maxNumberGuests || article.maxNumberGuests;
+	article.screenshot = screenshot || article.screenshot;
+	article.description = description || article.description;
 
 	return await article.save();
 }
