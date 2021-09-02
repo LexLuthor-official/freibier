@@ -1,0 +1,31 @@
+{
+    "POST": {
+        "type": "object",
+        "properties": {
+            "body": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "link",
+                    "screenshot",
+                    "title",
+                    "type"
+                ],
+                "properties": {
+                    "link": {
+                        "type": "string"
+                    },
+                    "screenshot": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

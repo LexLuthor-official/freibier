@@ -1,14 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
+const database = require("./lib/database.js");
+const errorHandling = require("./middleware/errorHandling.js");
+
+dotenv.config();
+
+database.init();
 
 const server = express();
-const app = server;
-
-const PORT = 3030;
-  
-app.listen(PORT, () => {
-console.log(`Example app listening at http://localhost:${PORT}`)
-})
+server.listen(process.env.PORT, () => console.log(`server listening on port ${process.env.PORT}`));
 
 server.use(express.json());
 server.use(cors());
@@ -38,4 +39,9 @@ const articles = [
 server.get("/articles", (req, res) => {
     res.send(articles);
 });
+
+server.use("/api/articles", articleRouter);
+server.use("/api", (req, res) => res.status(404).send());
+
+server.use(errorHandling);
 
