@@ -7,6 +7,7 @@ import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
+import checkAuth from './middleware/checkAuth.js';
 dotenv.config();
 
 
@@ -50,5 +51,8 @@ server.get("/articles", (req, res) => {
 
 server.use("/api/articles", articleRouter);
 server.use("/api", (req, res) => res.status(404).send());
+//server.use("/articles", checkAuth, articlesRouter);
+// server.use("/users", usersRouter);
+// server.use("/authentication", authenticationRouter);
 
 server.use(errorHandling);
