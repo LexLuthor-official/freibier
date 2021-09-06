@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 const init = async function () {
 	mongoose.connect(
-		"mongodb+srv://SaveYours:<LFez7zqBHGmiFWCB>@clustersaveyours.h4jgp.mongodb.net/myFirstDatabase",
+		process.env.MONGODB_URI,
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,

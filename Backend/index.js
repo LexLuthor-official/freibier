@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import init from './lib/database.js';
+//import init from './lib/database.js';
 //init();
 import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import serv from 'express-static';
+//import serv from 'express-static';
 dotenv.config();
 
 
