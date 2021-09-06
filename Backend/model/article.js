@@ -41,45 +41,45 @@ async function readAll () {
 	return articles;
 }
 
-async function readOne (id) {
-	return (await Article.aggregate([
-		{
-			$match: {
-				_id: mongoose.Types.ObjectId(id),
-			},
-		},
-		{
-            $lookup: {
-                from: "guests",
-                localField: "_id",
-                foreignField: "eventId",
-                as: "guests",
-            }
-        }
-	]))[0];
-}
+// async function readOne (id) {
+// 	return (await Article.aggregate([
+// 		{
+// 			$match: {
+// 				_id: mongoose.Types.ObjectId(id),
+// 			},
+// 		},
+// 		{
+//             $lookup: {
+//                 from: "guests",
+//                 localField: "_id",
+//                 foreignField: "eventId",
+//                 as: "guests",
+//             }
+//         }
+// 	]))[0];
+// }
 
-async function update (id, { link, title, screenshot, description }) {
-	const article = await Article.findById(id);
-	if (!article) throw new Error("event_not_found");
+// async function update (id, { link, title, screenshot, description }) {
+// 	const article = await Article.findById(id);
+// 	if (!article) throw new Error("event_not_found");
 
-	article.link = link || article.link;
-	article.title = title || article.title;
-	article.screenshot = screenshot || article.screenshot;
-	article.description = description || article.description;
+// 	article.link = link || article.link;
+// 	article.title = title || article.title;
+// 	article.screenshot = screenshot || article.screenshot;
+// 	article.description = description || article.description;
 
-	return await article.save();
-}
+// 	return await article.save();
+// }
 
-async function deleteById (id){
-	console.log("deleted by id: ", id);
-	return await Article.findByIdAndDelete(id);
-}
+// async function deleteById (id){
+// 	console.log("deleted by id: ", id);
+// 	return await Article.findByIdAndDelete(id);
+// }
 
 export default {
 	create,
 	readAll,
-    readOne,
-	update,
-	deleteById,
+    //readOne,
+	// update,
+	// deleteById,
 };

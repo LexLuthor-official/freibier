@@ -7,7 +7,6 @@ import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-//import serv from 'express-static';
 dotenv.config();
 
 
@@ -46,11 +45,10 @@ server.use(express.static('images'))
 // ];
 
 server.get("/articles", (req, res) => {
-    res.send(articles);
+    res.send();
 });
 
 server.use("/api/articles", articleRouter);
-//server.use("/api/login", loginRouter);
 server.use("/api", (req, res) => res.status(404).send());
 
 server.use(errorHandling);
