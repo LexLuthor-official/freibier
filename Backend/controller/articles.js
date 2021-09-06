@@ -1,6 +1,6 @@
-const articleModel = require("../model/article.js");
+import articleModel from '../model/article.js';
 
-module.exports = {
+export default {
     read: async (req, res, next) => {
         try {
             const response = await articleModel.readAll();

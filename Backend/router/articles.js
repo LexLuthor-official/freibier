@@ -1,17 +1,13 @@
-const express = require("express");
-const router = express.Router();
+import express from 'express';
+const articleRouter = express.Router();
 
-const articleRouter = require("../router/articles.js");
+import articleController from '../controller/articles.js';
 
-const articleController = require("../controller/articles.js");
+articleRouter.get("/article?", /*validate(articleSchema.GET),*/ articleController.read);
+articleRouter.post("/", /*validate(articleSchema.POST),*/ articleController.create);
+articleRouter.patch("/article", /*validate(articleSchema.PATCH),*/ articleController.update);
+articleRouter.delete("/article", /*validate(articleSchema.DELETE),*/ articleController.delete);
 
-//const articleSchema = require("../schema/article.json");
+articleRouter.use("/articles", articleRouter);
 
-router.get("/article?", /*validate(articleSchema.GET),*/ articleController.read);
-router.post("/", /*validate(articleSchema.POST),*/ articleController.create);
-router.patch("/article", /*validate(articleSchema.PATCH),*/ articleController.update);
-router.delete("/article", /*validate(articleSchema.DELETE),*/ articleController.delete);
-
-router.use("/articles", articleRouter);
-
-module.exports = router;
+export default articleRouter;

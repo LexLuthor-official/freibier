@@ -4,6 +4,25 @@ const Postform = () => {
 
    const [name, setName] = useState('');
    const [pwd, setPwd] = useState('');
+   const [upload, setUpload] = useState(null);
+
+   const handleSubmit = (e)=>{
+      e.preventDefault();
+      const files = upload; // Array.from(e.target.upload)
+
+      const formData = new FormData();
+
+      files.forEach((file,i)=>{
+         formData.append(i, file);
+      })
+
+      fetch("/api/login",{
+          method: "POST",
+          body: formData
+      })
+      .then(res =>res.json())
+      .then()
+   }
 
    const handle = () => {
       localStorage.setItem('E-Mail', name);
@@ -15,35 +34,42 @@ const Postform = () => {
    };
    return (
       <div className="App">
-         <h1>Name of the user:</h1>
-         <input
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-         />
-         <h1>Password of the user:</h1>
-         <input
-            type="password"
-            placeholder="Password"
-            value={pwd}
-            onChange={(e) => setPwd(e.target.value)}
-         />
-         <div>
-            <button onClick={handle}>Done</button>
-         </div>
-         {localStorage.getItem('E-Mail') && (
+         <form onSubmit={handleSubmit}>
+            <h1>Name of the user:</h1>
+            <input
+               placeholder="Name"
+               value={name}
+               onChange={(e) => setName(e.target.value)}
+            />
+            <h1>Password of the user:</h1>
+            <input
+               type="password"
+               placeholder="Password"
+               value={pwd}
+               onChange={(e) => setPwd(e.target.value)}
+            />
+            <input 
+               type="file"
+               onChange={(e) => setUpload(e.target.value)}
+            />
             <div>
-               Name: <p>{localStorage.getItem('E-Mail')}</p>
+               <button onClick={handle}>Done</button>
             </div>
-         )}
-         {localStorage.getItem('Password') && (
+            {localStorage.getItem('E-Mail') && (
+               <div>
+                  Name: <p>{localStorage.getItem('E-Mail')}</p>
+               </div>
+            )}
+            {localStorage.getItem('Password') && (
+               <div>
+                  Password: <p>{localStorage.getItem('Password')}</p>
+               </div>
+            )}
             <div>
-               Password: <p>{localStorage.getItem('Password')}</p>
+               <button onClick={remove}>Remove</button>
             </div>
-         )}
-         <div>
-            <button onClick={remove}>Remove</button>
-         </div>
+            <input type="submit" value="Absenden" />
+         </form>
       </div>
    );
 };

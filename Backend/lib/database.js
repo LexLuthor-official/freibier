@@ -1,22 +1,19 @@
-const dotenv = require("dotenv");
+import dotenv from 'dotenv';
 dotenv.config();
-const mongoose = require("mongoose");
-
-mongoose.connect(
-	process.env.MONGODB_URI,
-	{
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-		useCreateIndex: true,
-		auth: { authSource: "admin" }
-	}
-);
+import mongoose from 'mongoose';
 
 const init = async function () {
-	const db = await mongoose.connection;
-	db.on("error", console.error);
-	console.log("MONGO DB CONNECTED");
+	mongoose.connect(
+		"mongodb+srv://SaveYours:<LFez7zqBHGmiFWCB>@clustersaveyours.h4jgp.mongodb.net/myFirstDatabase",
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			auth: { authSource: "admin" }
+		}, (err)=> { if(err?console.log(err):console.log("Mongodb infected..."));
+		}
+	);
+
 }
 
-module.exports = { init };
+
+export default init;

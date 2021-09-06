@@ -1,14 +1,20 @@
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const database = require("./lib/database.js");
-const errorHandling = require("./middleware/errorHandling.js");
-const articleRouter = require("./router/articles.js");
-const cookieParser = require("cookie-parser");
-
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import init from './lib/database.js';
+//init();
+import errorHandling from './middleware/errorHandling.js';
+import articleRouter from './router/articles.js';
+import cookieParser from 'cookie-parser';
+import mongoose from 'mongoose';
+import serv from 'express-static';
 dotenv.config();
 
-database.init();
+
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
+    if(err?console.log(err):console.log("Mongodb infected..."));
+});
+
 
 const server = express();
 server.listen(process.env.PORT, () => console.log(`server listening on port ${process.env.PORT}`));
@@ -17,7 +23,7 @@ server.use(express.json());
 server.use(cors());
 server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
-
+server.use(express.static('images'))
 // const articles = [
 //     {
 //         link: "article1",
@@ -44,6 +50,7 @@ server.get("/articles", (req, res) => {
 });
 
 server.use("/api/articles", articleRouter);
+//server.use("/api/login", loginRouter);
 server.use("/api", (req, res) => res.status(404).send());
 
 server.use(errorHandling);

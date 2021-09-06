@@ -1,10 +1,14 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const articleSchema = mongoose.Schema({
-	link: {
+	originalLink: {
 		type: String,
 		required: true,
 	},
+	// shortenLink:{
+	// 	type: String,
+	// 	required: true,
+	// },
 	screenshot: {
 		type: String, 
 		required: true,
@@ -17,7 +21,7 @@ const articleSchema = mongoose.Schema({
 		type: String, 
 		required: true,
 	},
-}, { versionKey: false });
+});
 
 const Article = mongoose.model("Article", articleSchema);
 
@@ -72,7 +76,7 @@ async function deleteById (id){
 	return await Article.findByIdAndDelete(id);
 }
 
-module.exports = {
+export default {
 	create,
 	readAll,
     readOne,
