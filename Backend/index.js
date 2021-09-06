@@ -51,8 +51,5 @@ server.get("/articles", (req, res) => {
 
 server.use("/api/articles", articleRouter);
 server.use("/api", (req, res) => res.status(404).send());
-//server.use("/articles", checkAuth, articlesRouter);
-// server.use("/users", usersRouter);
-// server.use("/authentication", authenticationRouter);
 
 server.use(errorHandling);
