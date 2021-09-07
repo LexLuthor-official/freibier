@@ -7,7 +7,7 @@ import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import checkAuth from './middleware/checkAuth.js';
+import articles from './controller/articles.js';
 dotenv.config();
 
 
@@ -24,6 +24,7 @@ server.use(cors());
 server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
 server.use(express.static('images'))
+
 // const articles = [
 //     {
 //         link: "article1",
@@ -49,7 +50,8 @@ server.get("/articles", (req, res) => {
     res.send();
 });
 
-server.use("/api/articles", articleRouter);
-server.use("/api", (req, res) => res.status(404).send());
+server.use("/api/articles", articleRouter), (req, res)=> res.status(200).send("article", articles);
+server.use("/api", (req, res) => res.status(404).send("hello"));
 
 server.use(errorHandling);
+
