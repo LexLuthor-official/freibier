@@ -12,7 +12,7 @@ dotenv.config();
 
 
 mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
-    if(err?console.log(err):console.log("Mongodb infected..."));
+    if(err?console.log(err):console.log("MongoDB infected..."));
 });
 
 
@@ -51,7 +51,7 @@ server.get("/articles", (req, res) => {
 });
 
 server.use("/api/articles", articleRouter), (req, res)=> res.status(200).send("article", articles);
-server.use("/api", (req, res) => res.status(404).send("hello"));
+server.use("/api", (req, res) => res.status(404).send("404"));
 
 server.use(errorHandling);
 

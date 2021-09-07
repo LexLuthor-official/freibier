@@ -5,7 +5,7 @@ import authenticationController from '../controller/authentication.js';
 
 const router = express.Router();
 
-router.post("/", csrfProtection, usersController.create);
+router.post("/api", csrfProtection, usersController.create);
 router.get("/", usersController.readAll);
 // //router.delete("/:userId", usersController.delete);
 
