@@ -9,7 +9,7 @@ const init = async function () {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			auth: { authSource: "admin" }
-		}, (err)=> { if(err?console.log(err):console.log("Mongodb infected..."));
+		}, (err)=> { if(err?console.log(err):console.log("Mongodb is watching you..."));
 		}
 	);
 
