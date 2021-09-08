@@ -1,11 +1,11 @@
-import express from "express";
-import usersController from "../controllers/users.js";
-import csrfProtection from "../middlewares/csrfProtection.js";
+// import express from "express";
+// import usersController from "../controllers/users.js";
+// import csrfProtection from "../middlewares/csrfProtection.js";
 
-const router = express.Router();
+// const router = express.Router();
 
-router.post("/api/user", csrfProtection, usersController.create);
-router.get("/users", usersController.readAll);
+// router.post("/api/user", csrfProtection, usersController.create);
+// router.get("/users", usersController.readAll);
 
 // // GUI Routes
 // router.get('/form/create', csrfProtection, function (req, res) {
@@ -19,4 +19,4 @@ router.get("/users", usersController.readAll);
 // 	)
 // })
 
-export default router;
+// export default router;

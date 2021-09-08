@@ -32,7 +32,6 @@ async function create ({ link, screenshot, title, description }) {
 		title,
 		description,
 	});
-
 	return await article.save();
 }
 

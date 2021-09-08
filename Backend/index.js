@@ -5,7 +5,7 @@ import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import articles from './controller/articles.js';
+import read from './controller/articles.js';
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
@@ -42,12 +42,22 @@ server.use(express.static('images'))
 //     },
 // ];
 
-server.get("/articles", (req, res) => {
-    res.send(articles);
-});
 
-server.use("/api/articles", articleRouter), (req, res)=> res.status(200).send("article", articles);
+// server.use("/",(req, res, next)=>{
+//     console.log('----------------------------- SERVER')
+//     console.log('---- params\n',req.params);
+//     //console.log('---- headers\n', req.headers);
+//     console.log('---- body\n', req.body);
+//     //console.log('---- files\n', req.files);
+//     console.log('-----------------------------\n');
+//     next();
+//     }); 
+
+server.get("/article", articleRouter);
+
+
+
+server.use("/api/articles", articleRouter);
 server.use("/api", (req, res) => res.status(404).send("404"));
 
 server.use(errorHandling);
-

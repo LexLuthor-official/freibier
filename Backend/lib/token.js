@@ -1,23 +1,23 @@
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
-const algorithm = "HS256";
+// const algorithm = "HS256";
 
-const createToken = payload => {
-    const options = {
-        algorithm,
-        expiresIn: `${process.env.TOKEN_EXP}s`,
-    };
-    return jwt.sign(payload, process.env.TOKEN_SECRET, options);
-}
+// const createToken = payload => {
+//     const options = {
+//         algorithm,
+//         expiresIn: `${process.env.TOKEN_EXP}s`,
+//     };
+//     return jwt.sign(payload, process.env.TOKEN_SECRET, options);
+// }
 
-const verifyToken = token => {
-    return jwt.verify(token, process.env.TOKEN_SECRET, { algorithms: [algorithm] }, (error, payload) => {
-        if (error) throw new Error("token invalid");
-        return payload;
-    });
-}
+// const verifyToken = token => {
+//     return jwt.verify(token, process.env.TOKEN_SECRET, { algorithms: [algorithm] }, (error, payload) => {
+//         if (error) throw new Error("token invalid");
+//         return payload;
+//     });
+// }
 
-export default {
-    createToken,
-    verifyToken,
-};
+// export default {
+//     createToken,
+//     verifyToken,
+// };

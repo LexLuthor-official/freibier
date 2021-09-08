@@ -1,11 +1,9 @@
 import express from 'express';
-const articleRouter = express.Router();
-
 import articleController from '../controller/articles.js';
 
-articleRouter.get("/article?", articleController.read);
-articleRouter.post("", articleController.create);
+const articleRouter = express.Router();
 
-articleRouter.use("/articles", articleRouter);
+articleRouter.get("/article", articleController.read);
+articleRouter.post("/", articleController.create);
 
 export default articleRouter;

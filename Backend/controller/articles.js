@@ -3,6 +3,7 @@ import articleModel from '../model/article.js';
 export default {
     read: async (req, res, next) => {
         try {
+            console.log("read");
             const response = await articleModel.readAll();
             if (!response) return res.status(404).send();
             res.json(response);
