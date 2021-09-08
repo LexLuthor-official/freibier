@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const articleSchema = mongoose.Schema({
-	originalLink: {
+	link: {
 		type: String,
 		//required: true,
 	},

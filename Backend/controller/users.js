@@ -21,14 +21,5 @@ export default {
         } catch (error) {
             next(error);
         }
-    },
-
-    // delete: async function (req, res, next) {
-    //     try {
-    //         const result = await User.deleteById(req.params.userId);
-    //         res.json(result);
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
+    }
 };

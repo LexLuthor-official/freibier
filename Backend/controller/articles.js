@@ -25,30 +25,5 @@ export default {
         } catch (error) {
             next(error);           
         }
-    },
-
-    update: async (req, res, next) => {
-        try {
-            const response = await articleModel.update(req.params.eventId, {
-                link: req.body.link,
-                title: req.body.title,
-                screenshot: req.body.screenshot,
-                description: req.body.description,
-            });
-
-            res.json(response);
-        } catch (error) {
-            next(error);
-        }
-    },
-
-    delete: async (req, res, next) => {
-        console.log("delete");
-        try {
-            await articleModel.deleteById(req.params.eventId);
-            res.status(204).send();
-        } catch (error) {
-            next(error);
-        }
-    },
+    }
 };

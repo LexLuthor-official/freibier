@@ -1,8 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-//import init from './lib/database.js';
-//init();
 import errorHandling from './middleware/errorHandling.js';
 import articleRouter from './router/articles.js';
 import cookieParser from 'cookie-parser';
@@ -10,11 +8,9 @@ import mongoose from 'mongoose';
 import articles from './controller/articles.js';
 dotenv.config();
 
-
 mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true, useUnifiedTopology:true}, (err)=>{
     if(err?console.log(err):console.log("MongoDB infected..."));
 });
-
 
 const server = express();
 server.listen(process.env.PORT, () => console.log(`server listening on port ${process.env.PORT}`));
@@ -47,7 +43,7 @@ server.use(express.static('images'))
 // ];
 
 server.get("/articles", (req, res) => {
-    res.send();
+    res.send(articles);
 });
 
 server.use("/api/articles", articleRouter), (req, res)=> res.status(200).send("article", articles);

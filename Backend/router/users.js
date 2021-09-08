@@ -1,13 +1,11 @@
 import express from "express";
 import usersController from "../controllers/users.js";
 import csrfProtection from "../middlewares/csrfProtection.js";
-import authenticationController from '../controller/authentication.js';
 
 const router = express.Router();
 
-router.post("/api", csrfProtection, usersController.create);
-router.get("/", usersController.readAll);
-// //router.delete("/:userId", usersController.delete);
+router.post("/api/user", csrfProtection, usersController.create);
+router.get("/users", usersController.readAll);
 
 // // GUI Routes
 // router.get('/form/create', csrfProtection, function (req, res) {
